@@ -1,0 +1,34 @@
+<svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .rope { 
+        fill: none; 
+        stroke: #8B4513; 
+        stroke-width: 6; 
+        stroke-linecap: round;
+      }
+      .standing-line {
+        fill: none; 
+        stroke: #654321; 
+        stroke-width: 8; 
+        stroke-linecap: round;
+      }
+    </style>
+  </defs>
+  
+  <!-- Standing line -->
+  <line x1="100" y1="20" x2="100" y2="80" class="standing-line" />
+  
+  <!-- First two wraps -->
+  <path class="rope" d="M 70 65 Q 85 60 100 65 Q 115 70 130 65" />
+  <path class="rope" d="M 70 55 Q 85 50 100 55 Q 115 60 130 55" />
+  
+  <!-- Third wrap crossing over -->
+  <path class="rope" d="M 130 40 Q 115 35 100 40 Q 85 45 70 40" />
+  
+  <!-- Working end -->
+  <line x1="130" y1="40" x2="150" y2="30" class="rope" />
+  
+  <!-- Text label -->
+  <text x="10" y="35" font-family="Arial" font-size="8" fill="#666">Cross over</text>
+</svg>

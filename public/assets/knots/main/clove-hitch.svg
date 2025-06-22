@@ -1,0 +1,22 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .rope { 
+        fill: none; 
+        stroke: #8B4513; 
+        stroke-width: 8; 
+        stroke-linecap: round;
+      }
+      .post {
+        fill: #654321;
+      }
+    </style>
+  </defs>
+  
+  <!-- Post -->
+  <rect x="90" y="40" width="20" height="120" class="post" />
+  
+  <!-- Clove hitch wraps -->
+  <path class="rope" d="M 60 80 Q 90 80 110 80 Q 130 80 110 100 Q 90 100 110 120 Q 130 120 140 120" />
+  <path class="rope" d="M 60 100 Q 90 100 110 100" />
+</svg>

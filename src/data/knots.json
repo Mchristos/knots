@@ -1,0 +1,364 @@
+{
+  "categories": [
+    {
+      "id": "binding",
+      "name": "Binding Knots",
+      "description": "Knots used to tie objects together or secure bundles"
+    },
+    {
+      "id": "loop",
+      "name": "Loop Knots", 
+      "description": "Knots that create fixed or adjustable loops"
+    },
+    {
+      "id": "hitch",
+      "name": "Hitching Knots",
+      "description": "Knots used to attach rope to posts, rings, or other objects"
+    },
+    {
+      "id": "bend",
+      "name": "Bend Knots",
+      "description": "Knots used to join two ropes together"
+    },
+    {
+      "id": "stopper",
+      "name": "Stopper Knots",
+      "description": "Knots used to prevent rope from running through blocks or holes"
+    },
+    {
+      "id": "friction",
+      "name": "Friction Knots",
+      "description": "Knots that grip under load but can slide when unloaded"
+    }
+  ],
+  "knots": [
+    {
+      "id": "square-knot",
+      "name": "Square Knot",
+      "categoryId": "binding",
+      "difficulty": "Easy",
+      "uses": ["First aid bandages", "Tying packages", "General binding"],
+      "description": "A reliable binding knot that lies flat and won't slip when properly tied.",
+      "strength": 6,
+      "mainImage": "/assets/knots/main/square-knot.svg",
+      "instructions": [
+        {
+          "stepNumber": 1,
+          "instruction": "Hold one rope end in each hand. Cross the right rope over the left rope.",
+          "image": "/assets/knots/steps/square-knot-step-1.svg"
+        },
+        {
+          "stepNumber": 2,
+          "instruction": "Bring the right rope under and up through the loop created.",
+          "image": "/assets/knots/steps/square-knot-step-2.svg"
+        },
+        {
+          "stepNumber": 3,
+          "instruction": "Now cross the left rope over the right rope.",
+          "image": "/assets/knots/steps/square-knot-step-3.svg"
+        },
+        {
+          "stepNumber": 4,
+          "instruction": "Bring the left rope under and up through the loop. Pull tight.",
+          "image": "/assets/knots/steps/square-knot-step-4.svg"
+        }
+      ],
+      "tips": [
+        "Remember: Right over left, then left over right",
+        "Pull both ends evenly to tighten",
+        "The finished knot should lay flat"
+      ]
+    },
+    {
+      "id": "bowline",
+      "name": "Bowline",
+      "categoryId": "loop",
+      "difficulty": "Medium", 
+      "uses": ["Climbing", "Sailing", "Rescue operations", "Fixed loop"],
+      "description": "Creates a secure loop that won't slip under load. Known as the 'king of knots'.",
+      "strength": 9,
+      "mainImage": "/assets/knots/main/bowline.svg",
+      "instructions": [
+        {
+          "stepNumber": 1,
+          "instruction": "Create a small loop in the rope, leaving plenty of working end.",
+          "image": "/assets/knots/steps/bowline-step-1.svg"
+        },
+        {
+          "stepNumber": 2,
+          "instruction": "Pass the working end up through the loop from below.",
+          "image": "/assets/knots/steps/bowline-step-2.svg"
+        },
+        {
+          "stepNumber": 3,
+          "instruction": "Wrap the working end around the standing line.",
+          "image": "/assets/knots/steps/bowline-step-3.svg"
+        },
+        {
+          "stepNumber": 4,
+          "instruction": "Pass the working end back down through the original loop.",
+          "image": "/assets/knots/steps/bowline-step-4.svg"
+        },
+        {
+          "stepNumber": 5,
+          "instruction": "Tighten by pulling the working end and the loop.",
+          "image": "/assets/knots/steps/bowline-step-5.svg"
+        }
+      ],
+      "tips": [
+        "Remember: 'Up through the rabbit hole, around the tree, and back down the rabbit hole'",
+        "Always leave at least 6 inches of tail for safety",
+        "Check the knot before trusting it with your life"
+      ]
+    },
+    {
+      "id": "clove-hitch",
+      "name": "Clove Hitch",
+      "categoryId": "hitch",
+      "difficulty": "Easy",
+      "uses": ["Securing to posts", "Starting lashings", "Temporary attachment"],
+      "description": "Quick and easy hitch for temporary attachment to poles or posts.",
+      "strength": 5,
+      "mainImage": "/assets/knots/main/clove-hitch.svg",
+      "instructions": [
+        {
+          "stepNumber": 1,
+          "instruction": "Wrap the rope around the post or pole.",
+          "image": "/assets/knots/steps/clove-hitch-step-1.svg"
+        },
+        {
+          "stepNumber": 2,
+          "instruction": "Cross over and wrap around again.",
+          "image": "/assets/knots/steps/clove-hitch-step-2.svg"
+        },
+        {
+          "stepNumber": 3,
+          "instruction": "Tuck the working end under the last wrap and pull tight.",
+          "image": "/assets/knots/steps/clove-hitch-step-3.svg"
+        }
+      ]
+    },
+    {
+      "id": "figure-eight",
+      "name": "Figure Eight",
+      "categoryId": "stopper",
+      "difficulty": "Easy",
+      "uses": ["Preventing rope end from slipping", "Climbing", "Sailing"],
+      "description": "A stopper knot that's easy to untie even after being loaded.",
+      "strength": 7,
+      "mainImage": "/assets/knots/main/figure-eight.svg",
+      "instructions": [
+        {
+          "stepNumber": 1,
+          "instruction": "Form a loop in the rope.",
+          "image": "/assets/knots/steps/figure-eight-step-1.svg"
+        },
+        {
+          "stepNumber": 2,
+          "instruction": "Pass the working end around and through the loop.",
+          "image": "/assets/knots/steps/figure-eight-step-2.svg"
+        },
+        {
+          "stepNumber": 3,
+          "instruction": "Tighten the knot by pulling both ends.",
+          "image": "/assets/knots/steps/figure-eight-step-3.svg"
+        }
+      ]
+    },
+    {
+      "id": "trucker-hitch",
+      "name": "Trucker's Hitch",
+      "categoryId": "binding",
+      "difficulty": "Hard",
+      "uses": ["Securing cargo", "Tensioning lines", "Heavy loads"],
+      "description": "Powerful mechanical advantage knot for securing heavy loads.",
+      "strength": 10,
+      "mainImage": "/assets/knots/main/trucker-hitch.svg",
+      "instructions": [
+        {
+          "stepNumber": 1,
+          "instruction": "Create a loop in the rope using a slip knot.",
+          "image": "/assets/knots/steps/trucker-hitch-step-1.svg"
+        },
+        {
+          "stepNumber": 2,
+          "instruction": "Pass the working end through the anchor point.",
+          "image": "/assets/knots/steps/trucker-hitch-step-2.svg"
+        },
+        {
+          "stepNumber": 3,
+          "instruction": "Thread the working end through the loop to create a pulley system.",
+          "image": "/assets/knots/steps/trucker-hitch-step-3.svg"
+        },
+        {
+          "stepNumber": 4,
+          "instruction": "Pull tight and secure with two half hitches.",
+          "image": "/assets/knots/steps/trucker-hitch-step-4.svg"
+        }
+      ]
+    },
+    {
+      "id": "sheet-bend",
+      "name": "Sheet Bend",
+      "categoryId": "bend",
+      "difficulty": "Medium",
+      "uses": ["Joining different rope sizes", "Temporary rope extension", "Sailing"],
+      "description": "Best knot for joining two ropes of different sizes or materials.",
+      "strength": 7,
+      "mainImage": "/assets/knots/main/sheet-bend.svg",
+      "instructions": [
+        {
+          "stepNumber": 1,
+          "instruction": "Form a loop with the thicker rope.",
+          "image": "/assets/knots/steps/sheet-bend-step-1.svg"
+        },
+        {
+          "stepNumber": 2,
+          "instruction": "Pass the thinner rope up through the loop.",
+          "image": "/assets/knots/steps/sheet-bend-step-2.svg"
+        },
+        {
+          "stepNumber": 3,
+          "instruction": "Wrap around both parts of the thick rope and back under itself.",
+          "image": "/assets/knots/steps/sheet-bend-step-3.svg"
+        }
+      ]
+    },
+    {
+      "id": "prusik",
+      "name": "Prusik Knot",
+      "categoryId": "friction",
+      "difficulty": "Hard",
+      "uses": ["Climbing protection", "Rope ascension", "Safety backup"],
+      "description": "Friction knot that grips under load but slides when unloaded.",
+      "strength": 8,
+      "mainImage": "/assets/knots/main/prusik.svg",
+      "instructions": [
+        {
+          "stepNumber": 1,
+          "instruction": "Wrap the prusik cord around the main rope.",
+          "image": "/assets/knots/steps/prusik-step-1.svg"
+        },
+        {
+          "stepNumber": 2,
+          "instruction": "Pass the loop through itself and wrap again.",
+          "image": "/assets/knots/steps/prusik-step-2.svg"
+        },
+        {
+          "stepNumber": 3,
+          "instruction": "Tighten by pulling the loop away from the main rope.",
+          "image": "/assets/knots/steps/prusik-step-3.svg"
+        }
+      ]
+    },
+    {
+      "id": "half-hitch",
+      "name": "Half Hitch",
+      "categoryId": "hitch",
+      "difficulty": "Easy",
+      "uses": ["Finishing other knots", "Temporary securing", "Basic attachment"],
+      "description": "Simple hitch often used to finish other knots.",
+      "strength": 3,
+      "mainImage": "/assets/knots/main/half-hitch.svg",
+      "instructions": [
+        {
+          "stepNumber": 1,
+          "instruction": "Pass the rope around the object.",
+          "image": "/assets/knots/steps/half-hitch-step-1.svg"
+        },
+        {
+          "stepNumber": 2,
+          "instruction": "Bring the working end over and under the standing line.",
+          "image": "/assets/knots/steps/half-hitch-step-2.svg"
+        }
+      ]
+    },
+    {
+      "id": "timber-hitch",
+      "name": "Timber Hitch",
+      "categoryId": "hitch",
+      "difficulty": "Easy",
+      "uses": ["Dragging logs", "Lifting timber", "Construction"],
+      "description": "Specialized hitch for attaching rope to cylindrical objects.",
+      "strength": 6,
+      "mainImage": "/assets/knots/main/timber-hitch.svg",
+      "instructions": [
+        {
+          "stepNumber": 1,
+          "instruction": "Wrap the rope around the log or timber.",
+          "image": "/assets/knots/steps/timber-hitch-step-1.svg"
+        },
+        {
+          "stepNumber": 2,
+          "instruction": "Twist the working end around itself several times.",
+          "image": "/assets/knots/steps/timber-hitch-step-2.svg"
+        }
+      ]
+    },
+    {
+      "id": "butterfly",
+      "name": "Butterfly Knot",
+      "categoryId": "loop",
+      "difficulty": "Hard",
+      "uses": ["Middle rope loops", "Climbing anchors", "Load distribution"],
+      "description": "Creates a secure loop in the middle of a rope without accessing the ends.",
+      "strength": 9,
+      "mainImage": "/assets/knots/main/butterfly.svg",
+      "instructions": [
+        {
+          "stepNumber": 1,
+          "instruction": "Form a figure-8 loop in the rope.",
+          "image": "/assets/knots/steps/butterfly-step-1.svg"
+        },
+        {
+          "stepNumber": 2,
+          "instruction": "Fold the top loop down over the crossing.",
+          "image": "/assets/knots/steps/butterfly-step-2.svg"
+        },
+        {
+          "stepNumber": 3,
+          "instruction": "Pull the folded loop through and tighten.",
+          "image": "/assets/knots/steps/butterfly-step-3.svg"
+        }
+      ]
+    },
+    {
+      "id": "rolling-hitch",
+      "name": "Rolling Hitch",
+      "categoryId": "hitch",
+      "difficulty": "Medium",
+      "uses": ["Tensioning guy lines", "Adjustable attachments", "Camping", "Sailing"],
+      "description": "An adjustable hitch that grips well under tension and can slide when slack. Excellent for adjusting tension on guy lines.",
+      "strength": 7,
+      "mainImage": "/assets/knots/main/rolling-hitch.svg",
+      "instructions": [
+        {
+          "stepNumber": 1,
+          "instruction": "Pass the working end around the standing line or object.",
+          "image": "/assets/knots/steps/rolling-hitch-step-1.svg"
+        },
+        {
+          "stepNumber": 2,
+          "instruction": "Make a second wrap around, staying on the loaded side.",
+          "image": "/assets/knots/steps/rolling-hitch-step-2.svg"
+        },
+        {
+          "stepNumber": 3,
+          "instruction": "Cross over and make a third wrap on the other side.",
+          "image": "/assets/knots/steps/rolling-hitch-step-3.svg"
+        },
+        {
+          "stepNumber": 4,
+          "instruction": "Finish with a half hitch to lock the knot in place.",
+          "image": "/assets/knots/steps/rolling-hitch-step-4.svg"
+        }
+      ],
+      "tips": [
+        "Keep the first two wraps on the side that will be loaded",
+        "The knot will grip when loaded but slide when slack",
+        "Great for adjusting tent guy lines without untying",
+        "Works best on smooth, round objects"
+      ]
+    }
+  ]
+}

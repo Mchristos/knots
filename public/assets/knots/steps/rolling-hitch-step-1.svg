@@ -1,0 +1,30 @@
+<svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .rope { 
+        fill: none; 
+        stroke: #8B4513; 
+        stroke-width: 6; 
+        stroke-linecap: round;
+      }
+      .standing-line {
+        fill: none; 
+        stroke: #654321; 
+        stroke-width: 8; 
+        stroke-linecap: round;
+      }
+    </style>
+  </defs>
+  
+  <!-- Standing line -->
+  <line x1="100" y1="20" x2="100" y2="80" class="standing-line" />
+  
+  <!-- First pass around -->
+  <path class="rope" d="M 50 50 Q 80 45 100 50 Q 120 55 150 50" />
+  
+  <!-- Working end -->
+  <line x1="50" y1="50" x2="30" y2="40" class="rope" />
+  
+  <!-- Arrow showing direction -->
+  <path d="M 35 45 L 45 48 L 35 51 Z" fill="#666"/>
+</svg>

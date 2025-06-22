@@ -1,0 +1,33 @@
+<svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .rope { 
+        fill: none; 
+        stroke: #8B4513; 
+        stroke-width: 6; 
+        stroke-linecap: round;
+      }
+      .standing-line {
+        fill: none; 
+        stroke: #654321; 
+        stroke-width: 8; 
+        stroke-linecap: round;
+      }
+    </style>
+  </defs>
+  
+  <!-- Standing line -->
+  <line x1="100" y1="20" x2="100" y2="80" class="standing-line" />
+  
+  <!-- First wrap -->
+  <path class="rope" d="M 70 60 Q 85 55 100 60 Q 115 65 130 60" />
+  
+  <!-- Second wrap (same side) -->
+  <path class="rope" d="M 70 45 Q 85 40 100 45 Q 115 50 130 45" />
+  
+  <!-- Working end -->
+  <line x1="70" y1="45" x2="50" y2="35" class="rope" />
+  
+  <!-- Text label -->
+  <text x="140" y="35" font-family="Arial" font-size="8" fill="#666">Same side</text>
+</svg>

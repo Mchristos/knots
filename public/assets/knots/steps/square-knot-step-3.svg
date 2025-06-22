@@ -1,0 +1,25 @@
+<svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .rope-left { 
+        fill: none; 
+        stroke: #8B4513; 
+        stroke-width: 6; 
+        stroke-linecap: round;
+      }
+      .rope-right { 
+        fill: none; 
+        stroke: #D2B48C; 
+        stroke-width: 6; 
+        stroke-linecap: round;
+      }
+    </style>
+  </defs>
+  
+  <!-- Step 3: Left over right -->
+  <!-- Right rope (now positioned) -->
+  <path class="rope-right" d="M 170 40 Q 140 50 115 40 Q 100 30 85 40" />
+  
+  <!-- Left rope crossing over right -->
+  <path class="rope-left" d="M 30 40 Q 60 30 85 40 Q 100 50 115 40" />
+</svg>

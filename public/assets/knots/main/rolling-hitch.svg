@@ -1,0 +1,37 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .rope { 
+        fill: none; 
+        stroke: #8B4513; 
+        stroke-width: 8; 
+        stroke-linecap: round;
+      }
+      .standing-line {
+        fill: none; 
+        stroke: #654321; 
+        stroke-width: 10; 
+        stroke-linecap: round;
+      }
+    </style>
+  </defs>
+  
+  <!-- Standing line (vertical) -->
+  <line x1="100" y1="30" x2="100" y2="170" class="standing-line" />
+  
+  <!-- Rolling hitch wraps -->
+  <!-- First wrap (bottom) -->
+  <path class="rope" d="M 70 140 Q 85 135 100 140 Q 115 145 130 140" />
+  
+  <!-- Second wrap (middle) -->
+  <path class="rope" d="M 70 120 Q 85 115 100 120 Q 115 125 130 120" />
+  
+  <!-- Third wrap (top, crossing over) -->
+  <path class="rope" d="M 130 100 Q 115 95 100 100 Q 85 105 70 100" />
+  
+  <!-- Half hitch finish -->
+  <path class="rope" d="M 70 100 Q 60 90 70 80 Q 80 85 85 95" />
+  
+  <!-- Working end -->
+  <line x1="70" y1="80" x2="50" y2="60" class="rope" />
+</svg>

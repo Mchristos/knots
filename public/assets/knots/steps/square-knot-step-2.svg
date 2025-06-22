@@ -1,0 +1,25 @@
+<svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .rope-left { 
+        fill: none; 
+        stroke: #8B4513; 
+        stroke-width: 6; 
+        stroke-linecap: round;
+      }
+      .rope-right { 
+        fill: none; 
+        stroke: #D2B48C; 
+        stroke-width: 6; 
+        stroke-linecap: round;
+      }
+    </style>
+  </defs>
+  
+  <!-- Step 2: Right rope goes under and up -->
+  <!-- Left rope -->
+  <path class="rope-left" d="M 30 50 L 85 50" />
+  
+  <!-- Right rope going under and up through loop -->
+  <path class="rope-right" d="M 170 50 Q 140 70 115 50 Q 100 40 85 50 Q 100 30 115 40" />
+</svg>

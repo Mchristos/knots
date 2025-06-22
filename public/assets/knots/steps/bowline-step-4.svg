@@ -1,0 +1,14 @@
+<svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .rope { 
+        fill: none; 
+        stroke: #8B4513; 
+        stroke-width: 6; 
+        stroke-linecap: round;
+      }
+    </style>
+  </defs>
+  <circle cx="100" cy="50" r="30" class="rope" />
+  <text x="100" y="55" text-anchor="middle" font-family="Arial" font-size="10" fill="#666">Step</text>
+</svg>

@@ -1,0 +1,15 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .rope { 
+        fill: none; 
+        stroke: #8B4513; 
+        stroke-width: 8; 
+        stroke-linecap: round;
+      }
+    </style>
+  </defs>
+  
+  <!-- Figure-8 knot illustration -->
+  <path class="rope" d="M 100 30 Q 130 60 100 100 Q 70 140 100 170 Q 130 140 100 100 Q 70 60 100 30" />
+</svg>
