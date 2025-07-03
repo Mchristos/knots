@@ -119,22 +119,22 @@
       "uses": ["Securing to posts", "Starting lashings", "Temporary attachment"],
       "description": "Quick and easy hitch for temporary attachment to poles or posts.",
       "strength": 5,
-      "mainImage": "/assets/knots/main/clove-hitch.svg",
+      "mainImage": "/assets/knots/main/clove-hitch.png",
       "instructions": [
         {
           "stepNumber": 1,
           "instruction": "Wrap the rope around the post or pole.",
-          "image": "/assets/knots/steps/clove-hitch-step-1.svg"
+          "image": "https://www.wikihow.com/images/thumb/b/b2/Tie-a-Clove-Hitch-Knot-Step-2-Version-4.jpg/aid440404-v4-728px-Tie-a-Clove-Hitch-Knot-Step-2-Version-4.jpg.webp"
         },
         {
           "stepNumber": 2,
           "instruction": "Cross over and wrap around again.",
-          "image": "/assets/knots/steps/clove-hitch-step-2.svg"
+          "image": "https://www.wikihow.com/images/thumb/b/bf/Tie-a-Clove-Hitch-Knot-Step-3-Version-4.jpg/aid440404-v4-728px-Tie-a-Clove-Hitch-Knot-Step-3-Version-4.jpg.webp"
         },
         {
           "stepNumber": 3,
           "instruction": "Tuck the working end under the last wrap and pull tight.",
-          "image": "/assets/knots/steps/clove-hitch-step-3.svg"
+          "image": "https://www.wikihow.com/images/thumb/e/e3/Tie-a-Clove-Hitch-Knot-Step-4-Version-4.jpg/aid440404-v4-728px-Tie-a-Clove-Hitch-Knot-Step-4-Version-4.jpg.webp"
         }
       ]
     },
