@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { KnotData, Knot } from './types';
 import { KnotTile } from './components/KnotTile';
 import { KnotModal } from './components/KnotModal';
+import AIChat from './components/AIChat';
 import knotData from './data/knots.json';
 
 export const App: React.FC = () => {
@@ -33,12 +34,41 @@ export const App: React.FC = () => {
   const handleKnotClick = (knot: Knot) => {
     setSelectedKnot(knot);
     setIsModalOpen(true);
+    window.location.hash = knot.id; // Update URL hash
   };
 
   const handleModalClose = () => {
     setIsModalOpen(false);
     setSelectedKnot(null);
+    window.history.pushState("", document.title, window.location.pathname + window.location.search); // Clear URL hash
   };
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.substring(1); // Remove '#'
+      if (hash) {
+        const knotFromHash = data.knots.find(knot => knot.id === hash);
+        if (knotFromHash) {
+          setSelectedKnot(knotFromHash);
+          setIsModalOpen(true);
+        }
+      } else {
+        setIsModalOpen(false);
+        setSelectedKnot(null);
+      }
+    };
+
+    // Initial check on mount
+    handleHashChange();
+
+    // Listen for hash changes
+    window.addEventListener('hashchange', handleHashChange);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, [data.knots]); // Re-run if knot data changes
 
   const selectedCategory = selectedKnot 
     ? data.categories.find(cat => cat.id === selectedKnot.categoryId)
@@ -50,6 +80,8 @@ export const App: React.FC = () => {
         <h1>🪢 Knot Explorer</h1>
         <p>Discover different knots and their practical uses</p>
       </header>
+
+      <AIChat />
 
       <div className="filters">
         <div className="filter-group">
