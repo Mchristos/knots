@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { MockAIService } from '../services/aiService'; // Using MockAIService for demonstration
+import { AIService } from '../services/aiService';
 import { Knot } from '../types'; // Assuming Knot type is defined in types.ts
 
 /**
@@ -26,11 +26,11 @@ const AIChat: React.FC = () => {
   // State to manage the current input field value
   const [input, setInput] = useState<string>('');
   // Ref for the chat messages container to enable auto-scrolling
+
+  // Use the real AI service
+  const aiService = new AIService();
   const chatContainerRef = useRef<HTMLDivElement>(null);
 
-  // Initialize the AI service. Replace MockAIService with a real AI service
-  // (e.g., new GeminiAIService(API_KEY)) when integrating actual AI APIs.
-  const aiService = new MockAIService();
 
   /**
    * Scrolls the chat messages container to the bottom whenever new messages are added.
