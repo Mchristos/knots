@@ -1,3 +1,9 @@
+/*
+  Global Styles and Typography
+  ----------------------------------------------------------------------------
+  Defines base styles for the application, including font imports,
+  universal box-sizing, and body background/text colors.
+*/
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Fira+Code:wght@300;400;500;600&display=swap');
 
 * {
@@ -14,6 +20,11 @@ body {
   font-weight: 400;
 }
 
+/*
+  Container and Header
+  ----------------------------------------------------------------------------
+  Styles for the main content container and the application header.
+*/
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -41,6 +52,11 @@ header p {
   opacity: 0.8;
 }
 
+/*
+  Filter Section
+  ----------------------------------------------------------------------------
+  Styles for the knot filtering controls (category, difficulty, search).
+*/
 .filters {
   display: flex;
   gap: 16px;
@@ -93,6 +109,11 @@ header p {
   min-width: 180px;
 }
 
+/*
+  Knot Grid and Tiles
+  ----------------------------------------------------------------------------
+  Styles for the grid layout of knot tiles and individual knot tile appearance.
+*/
 .knots-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -245,6 +266,11 @@ header p {
   opacity: 0.9;
 }
 
+/*
+  Knot Modal
+  ----------------------------------------------------------------------------
+  Styles for the detailed knot information modal.
+*/
 .modal {
   display: none;
   position: fixed;
@@ -507,6 +533,11 @@ header p {
   color: #f6ad55;
 }
 
+/*
+  Media Queries
+  ----------------------------------------------------------------------------
+  Responsive adjustments for smaller screens.
+*/
 @media (max-width: 768px) {
   .container {
     padding: 15px;
@@ -531,7 +562,12 @@ header p {
   }
 }
 
-/* AI Chat Specific Styles */
+/*
+  AI Chat Specific Styles
+  ----------------------------------------------------------------------------
+  Styles for the AI chat assistant component, designed to integrate with the
+  existing dark theme and modern aesthetic.
+*/
 .ai-chat-container {
   background: linear-gradient(145deg, #374151, #2d3748);
   border: 1px solid #4a5568;
@@ -551,48 +587,48 @@ header p {
 }
 
 .chat-messages {
-  height: 350px; /* Slightly increased height */
+  height: 350px; /* Increased height for more chat history visibility */
   overflow-y: auto;
   border: 1px solid #4a5568;
-  border-radius: 12px; /* More rounded */
+  border-radius: 12px; /* More rounded corners for a softer look */
   padding: 15px;
   margin-bottom: 15px;
-  background-color: #2d3748; /* Darker background */
+  background-color: #2d3748; /* Darker background to match theme */
   display: flex;
   flex-direction: column;
-  gap: 12px; /* Increased gap */
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+  gap: 12px; /* Increased spacing between messages */
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2); /* Inner shadow for depth */
 }
 
 .message {
-  max-width: 85%; /* Slightly wider messages */
-  padding: 12px 18px; /* More padding */
-  border-radius: 18px; /* More rounded message bubbles */
+  max-width: 85%; /* Allows messages to take up more width */
+  padding: 12px 18px; /* Generous padding for readability */
+  border-radius: 18px; /* Highly rounded message bubbles */
   word-wrap: break-word;
   font-size: 0.95rem;
   line-height: 1.6;
 }
 
 .message.user {
-  background: linear-gradient(145deg, #63b3ed, #3182ce); /* Gradient for user messages */
+  background: linear-gradient(145deg, #63b3ed, #3182ce); /* Blue gradient for user messages */
   color: #1a202c;
-  align-self: flex-end;
-  border-bottom-right-radius: 6px; /* Smoother corner */
+  align-self: flex-end; /* Aligns user messages to the right */
+  border-bottom-right-radius: 6px; /* Slightly less rounded on the bottom-right for a speech bubble effect */
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .message.ai {
-  background: linear-gradient(145deg, #4a5568, #374151); /* Gradient for AI messages */
+  background: linear-gradient(145deg, #4a5568, #374151); /* Darker gradient for AI messages */
   color: #e2e8f0;
-  align-self: flex-start;
-  border-bottom-left-radius: 6px; /* Smoother corner */
+  align-self: flex-start; /* Aligns AI messages to the left */
+  border-bottom-left-radius: 6px; /* Slightly less rounded on the bottom-left for a speech bubble effect */
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .suggested-knots {
   margin-top: 15px;
   padding-top: 15px;
-  border-top: 1px solid rgba(255,255,255,0.15); /* Slightly stronger separator */
+  border-top: 1px solid rgba(255,255,255,0.15); /* Separator for suggested knots section */
 }
 
 .suggested-knots h4 {
@@ -608,13 +644,13 @@ header p {
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px; /* Increased gap */
+  gap: 10px; /* Spacing between individual knot tags */
 }
 
 .suggested-knots li {
-  background-color: rgba(99, 179, 237, 0.2); /* Lighter background for tags */
-  border: 1px solid #63b3ed; /* Border for tags */
-  border-radius: 8px; /* More rounded tags */
+  background-color: rgba(99, 179, 237, 0.2); /* Light blue background for tags */
+  border: 1px solid #63b3ed; /* Blue border for tags */
+  border-radius: 8px; /* Rounded corners for tags */
   padding: 6px 12px;
   font-size: 0.8rem;
   transition: background-color 0.2s ease;
@@ -625,7 +661,7 @@ header p {
 }
 
 .suggested-knots li a {
-  color: #63b3ed; /* Blue text for links */
+  color: #63b3ed; /* Blue text for links within tags */
   text-decoration: none;
   font-weight: 500;
 }
@@ -641,9 +677,9 @@ header p {
 
 .chat-input input {
   flex: 1;
-  padding: 14px 18px; /* More padding */
+  padding: 14px 18px; /* Generous padding for input field */
   border: 1px solid #4a5568;
-  border-radius: 12px; /* More rounded input */
+  border-radius: 12px; /* Rounded input field */
   background: #2d3748;
   color: #e2e8f0;
   font-size: 0.95rem;
@@ -659,10 +695,10 @@ header p {
 }
 
 .chat-input button {
-  background: linear-gradient(145deg, #63b3ed, #3182ce); /* Gradient for button */
+  background: linear-gradient(145deg, #63b3ed, #3182ce); /* Blue gradient for send button */
   color: #1a202c;
   border: none;
-  border-radius: 12px; /* More rounded button */
+  border-radius: 12px; /* Rounded send button */
   padding: 14px 22px;
   font-size: 0.95rem;
   font-weight: 600;
@@ -672,7 +708,7 @@ header p {
 }
 
 .chat-input button:hover {
-  background: linear-gradient(145deg, #4299e1, #2b6cb0); /* Darker gradient on hover */
+  background: linear-gradient(145deg, #4299e1, #2b6cb0); /* Darker blue gradient on hover */
   transform: translateY(-1px);
   box-shadow: 0 6px 12px rgba(0,0,0,0.3);
 }

@@ -1,25 +1,41 @@
 import React, { useState, useEffect } from 'react';
-import { KnotData, Knot } from './types';
+import { KnotData, Knot, Category } from './types';
 import { KnotTile } from './components/KnotTile';
 import { KnotModal } from './components/KnotModal';
 import AIChat from './components/AIChat';
 import knotData from './data/knots.json';
 
+/**
+ * The main application component for the Knot Explorer.
+ * Manages knot data, filtering, modal display, and hash-based routing.
+ */
 export const App: React.FC = () => {
+  // State to hold all knot data loaded from knots.json
   const [data] = useState<KnotData>(knotData as KnotData);
+  // State for knots currently displayed after filtering
   const [filteredKnots, setFilteredKnots] = useState<Knot[]>([]);
+  // State for the currently selected knot to display in the modal
   const [selectedKnot, setSelectedKnot] = useState<Knot | null>(null);
+  // State to control the visibility of the knot detail modal
   const [isModalOpen, setIsModalOpen] = useState(false);
+  // State to manage filter criteria (category, difficulty, search term)
   const [filters, setFilters] = useState({
     category: '',
     difficulty: '',
     search: ''
   });
 
+  /**
+   * useEffect hook to apply filters to the knot data.
+   * Runs whenever the `data.knots` or `filters` state changes.
+   */
   useEffect(() => {
     const filtered = data.knots.filter(knot => {
+      // Check if the knot matches the selected category filter
       const matchesCategory = !filters.category || knot.categoryId === filters.category;
+      // Check if the knot matches the selected difficulty filter
       const matchesDifficulty = !filters.difficulty || knot.difficulty === filters.difficulty;
+      // Check if the knot matches the search term in name, description, or uses
       const matchesSearch = !filters.search || 
         knot.name.toLowerCase().includes(filters.search.toLowerCase()) ||
         knot.description.toLowerCase().includes(filters.search.toLowerCase()) ||
@@ -31,46 +47,72 @@ export const App: React.FC = () => {
     setFilteredKnots(filtered);
   }, [data.knots, filters]);
 
+  /**
+   * Handles the click event on a knot tile.
+   * Sets the selected knot, opens the modal, and updates the URL hash.
+   * @param {Knot} knot - The knot object that was clicked.
+   */
   const handleKnotClick = (knot: Knot) => {
     setSelectedKnot(knot);
     setIsModalOpen(true);
-    window.location.hash = knot.id; // Update URL hash
+    // Update URL hash to enable direct linking and refresh persistence
+    window.location.hash = knot.id;
   };
 
+  /**
+   * Handles closing the knot detail modal.
+   * Clears the selected knot, closes the modal, and removes the URL hash.
+   */
   const handleModalClose = () => {
     setIsModalOpen(false);
     setSelectedKnot(null);
-    window.history.pushState("", document.title, window.location.pathname + window.location.search); // Clear URL hash
+    // Clear URL hash without adding a new entry to browser history
+    window.history.pushState("", document.title, window.location.pathname + window.location.search);
   };
 
+  /**
+   * useEffect hook to handle hash-based routing.
+   * Checks the URL hash on component mount and listens for hash changes.
+   * Opens the corresponding knot modal if a valid knot ID is found in the hash.
+   */
   useEffect(() => {
     const handleHashChange = () => {
-      const hash = window.location.hash.substring(1); // Remove '#'
+      // Extract knot ID from the URL hash (remove the leading '#')
+      const hash = window.location.hash.substring(1);
       if (hash) {
+        // Find the knot corresponding to the ID in the hash
         const knotFromHash = data.knots.find(knot => knot.id === hash);
         if (knotFromHash) {
+          // If found, set it as selected and open the modal
           setSelectedKnot(knotFromHash);
           setIsModalOpen(true);
+        } else {
+          // If hash exists but knot not found, close modal and clear hash
+          setIsModalOpen(false);
+          setSelectedKnot(null);
+          window.history.pushState("", document.title, window.location.pathname + window.location.search);
         }
       } else {
+        // If no hash, ensure modal is closed
         setIsModalOpen(false);
         setSelectedKnot(null);
       }
     };
 
-    // Initial check on mount
+    // Perform initial check when the component mounts
     handleHashChange();
 
-    // Listen for hash changes
+    // Add event listener for 'hashchange' to react to URL hash changes
     window.addEventListener('hashchange', handleHashChange);
 
-    // Cleanup
+    // Cleanup function to remove the event listener when the component unmounts
     return () => {
       window.removeEventListener('hashchange', handleHashChange);
     };
-  }, [data.knots]); // Re-run if knot data changes
+  }, [data.knots]); // Dependency array: re-run effect if knot data changes
 
-  const selectedCategory = selectedKnot 
+  // Determine the category of the selected knot for display in the modal
+  const selectedCategory: Category | undefined = selectedKnot 
     ? data.categories.find(cat => cat.id === selectedKnot.categoryId)
     : undefined;
 
@@ -81,6 +123,7 @@ export const App: React.FC = () => {
         <p>Discover different knots and their practical uses</p>
       </header>
 
+      {/* AI Chat component for natural language knot suggestions */}
       <AIChat />
 
       <div className="filters">
@@ -121,11 +164,13 @@ export const App: React.FC = () => {
             placeholder="Search knots..."
             value={filters.search}
             onChange={(e) => setFilters(prev => ({ ...prev, search: e.target.value }))}
+            aria-label="Search knots"
           />
         </div>
       </div>
 
       <div className="knots-grid">
+        {/* Render KnotTile components for each filtered knot */}
         {filteredKnots.map(knot => {
           const category = data.categories.find(cat => cat.id === knot.categoryId);
           return (
@@ -139,6 +184,7 @@ export const App: React.FC = () => {
         })}
       </div>
 
+      {/* Knot detail modal, displayed when a knot is selected */}
       <KnotModal
         knot={selectedKnot}
         category={selectedCategory}
