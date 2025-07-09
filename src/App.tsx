@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { KnotData, Knot, Category } from './types';
+import { KnotData, Knot, KnotCategory } from './types';
 import { KnotTile } from './components/KnotTile';
 import { KnotModal } from './components/KnotModal';
 import AIChat from './components/AIChat';
 import knotData from './data/knots.json';
 
 /**
- * The main application component for the Knot Explorer.
+ * The main application component for Knots.
  * Manages knot data, filtering, modal display, and hash-based routing.
  */
 export const App: React.FC = () => {
@@ -112,14 +112,15 @@ export const App: React.FC = () => {
   }, [data.knots]); // Dependency array: re-run effect if knot data changes
 
   // Determine the category of the selected knot for display in the modal
-  const selectedCategory: Category | undefined = selectedKnot 
+  const selectedCategory: KnotCategory | undefined = selectedKnot 
     ? data.categories.find(cat => cat.id === selectedKnot.categoryId)
     : undefined;
 
   return (
     <div className="container">
       <header>
-        <h1>🪢 Knot Explorer</h1>
+        <img src="https://static.thenounproject.com/png/29385-200.png" alt="Simple knot icon"></img>
+        <h1>Knots</h1>
         <p>Discover different knots and their practical uses</p>
       </header>
 
@@ -128,7 +129,7 @@ export const App: React.FC = () => {
 
       <div className="filters">
         <div className="filter-group">
-          <label htmlFor="category-filter">Category:</label>
+          <label htmlFor="category-filter">KnotCategory:</label>
           <select 
             id="category-filter"
             value={filters.category}

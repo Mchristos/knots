@@ -77,7 +77,7 @@
       "uses": ["Climbing", "Sailing", "Rescue operations", "Fixed loop"],
       "description": "Creates a secure loop that won't slip under load. Known as the 'king of knots'.",
       "strength": 9,
-      "mainImage": "/assets/knots/main/bowline.svg",
+      "mainImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Bowline_%28standard%29.svg/603px-Bowline_%28standard%29.svg.png?20090212022231",
       "instructions": [
         {
           "stepNumber": 1,
