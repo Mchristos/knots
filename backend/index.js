@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import geminiAIService from './services/geminiAIService.js';
+import aiService from './services/aiService.js';
 
 // Load environment variables from .env
 dotenv.config();
@@ -12,14 +12,13 @@ const PORT = process.env.PORT || 5050;
 app.use(cors());
 app.use(express.json());
 
-// POST /api/gemini
-app.post('/api/gemini', async (req, res) => {
+app.post('/api/ai', async (req, res) => {
   const { query } = req.body;
   if (!query) {
     return res.status(400).json({ error: 'Missing query' });
   }
   try {
-    const aiResponse = await geminiAIService.getKnotSuggestions(query);
+    const aiResponse = await aiService.getKnotSuggestions(query);
     res.json(aiResponse);
   } catch (err) {
     if (err.response) {
@@ -33,7 +32,7 @@ app.post('/api/gemini', async (req, res) => {
         return;
       }
     } else {
-      console.error('Gemini API error:', err);
+      console.error('AI Provider error:', err);
     }
     res.status(500).json({ error: 'AI service failed' });
   }

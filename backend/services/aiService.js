@@ -11,7 +11,6 @@ const knotsData = JSON.parse(
 );
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-console.log(GEMINI_API_KEY);
 const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
 
 function buildPrompt(query) {
@@ -29,20 +28,35 @@ async function getKnotSuggestions(query) {
     body,
     { headers: { 'Content-Type': 'application/json' } }
   );
-  // Gemini's response is in data.candidates[0].content.parts[0].text
-  let text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-  console.log(text);
-  // Strip markdown code fences and language hints
-  if (typeof text === 'string') {
-    text = text.trim()
-      .replace(/^```json\s*/i, '')
-      .replace(/^```\s*/i, '')
-      .replace(/```\s*$/i, '');
+
+  // Check for API error response from Google
+  if (data.error) {
+    console.error("AI Provider API Error:", data.error);
+    throw new Error(`AI Provider returned an error: ${data.error.message}`);
   }
+
+  // Safely access the response text
+  const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+
+  if (!text) {
+    console.error("AI response is missing expected content:", JSON.stringify(data, null, 2));
+    throw new Error('AI response did not contain valid content.');
+  }
+
+  // Extract JSON object from the response text using a regular expression
+  const jsonMatch = text.match(/{[\s\S]*}/);
+
+  if (!jsonMatch) {
+    console.error("No JSON object found in AI response. Raw text:", text);
+    throw new Error('AI did not return a valid JSON object.');
+  }
+
+  const jsonString = jsonMatch[0];
   let aiResponse;
   try {
-    aiResponse = JSON.parse(text);
-  } catch {
+    aiResponse = JSON.parse(jsonString);
+  } catch (e) {
+    console.error("Failed to parse extracted JSON. Raw string:", jsonString);
     throw new Error('AI did not return valid JSON');
   }
   // Map knot ids to full knot objects

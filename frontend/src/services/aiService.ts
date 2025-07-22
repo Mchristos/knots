@@ -10,7 +10,7 @@ export interface IAIService {
 }
 
 // Use Vite env variable for backend URL, fallback to localhost for dev
-const API_URL = `${import.meta.env.VITE_BACKEND_URL || 'http://localhost:5050'}/api/gemini`;
+const API_URL = `${import.meta.env.VITE_BACKEND_URL || 'http://localhost:5050'}/api/ai`;
 
 export class AIService implements IAIService {
   async getKnotSuggestions(query: string): Promise<AIResponse> {
