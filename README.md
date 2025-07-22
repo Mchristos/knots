@@ -21,17 +21,27 @@ To get Knots up and running on your local machine, follow these steps:
     ```
 
 2.  **Install dependencies**:
-    The project uses `npm` for package management. Navigate to the project root directory and install the required packages:
+    The project is now split into a `frontend` and `backend`. You'll need to install dependencies for both.
+
+    From the project root:
     ```bash
-    npm install
+    cd frontend && npm install
+    cd ../backend && npm install
     ```
 
-3.  **Start the development server**:
-    Once the dependencies are installed, you can start the development server:
-    ```bash
-    npm run dev
-    ```
-    This will typically open the application in your default web browser at `http://localhost:5173/` (or a similar address).
+3.  **Start the development servers**:
+    From the project root:
+
+    -   Start the frontend (in one terminal):
+        ```bash
+        cd frontend && npm run dev
+        ```
+    -   Start the backend (in another terminal):
+        ```bash
+        cd backend && node index.js
+        ```
+
+    The frontend will be available at `http://localhost:5173/`.
 
 ## Usage
 
@@ -45,19 +55,22 @@ To get Knots up and running on your local machine, follow these steps:
 
 ## AI Integration Notes
 
-The AI Knot Assistant currently uses a `MockAIService` (`src/services/aiService.ts`) for demonstration purposes. This mock service provides hardcoded responses based on simple keyword matching.
+The AI Knot Assistant uses a backend service to communicate with the Google Gemini API. The frontend `AIService` class in `frontend/src/services/aiService.ts` sends requests to a Node.js/Express backend, which then securely queries the Gemini API.
 
-**To integrate a real AI API (e.g., Google Gemini, OpenAI, Claude):**
+**Backend:**
 
-1.  **Create a new service class**: In `src/services/aiService.ts`, create a new class that implements the `IAIService` interface. This class will contain the logic to make actual API calls to your chosen AI provider.
+-   The backend is located in the `/backend` directory.
+-   It uses the `geminiAIService.js` to build a prompt and query the Gemini API.
+-   It requires a `GEMINI_API_KEY` environment variable to be set. You can create a `.env` file in the `/backend` directory to store this key.
 
-2.  **Prompt Engineering**: You will need to design effective prompts for your AI model to ensure it returns relevant knot suggestions and explanations in a structured format (e.g., JSON) that your application can parse.
+**Frontend:**
 
-3.  **Replace the mock service**: In `src/components/AIChat.tsx`, import and instantiate your new AI service instead of `MockAIService`.
+-   The `AIService` class in `frontend/src/services/aiService.ts` makes `fetch` requests to the backend.
+-   The backend URL is configurable via the `VITE_BACKEND_URL` environment variable in a `.env` file in the `frontend` directory.
 
-**Important Security Note on API Keys:**
+**Running the Application:**
 
-For production applications, you **MUST NEVER** expose your AI API keys directly in client-side code. This is a significant security risk. Instead, implement a **backend proxy server** that handles all communication with the AI API. Your client-side application would then send requests to your backend proxy, which securely forwards them to the AI API. This approach protects your API keys and allows for additional server-side logic like rate limiting, logging, and more complex data processing.
+See the "Setup" section for instructions on how to run both the frontend and backend services.
 
 ## Technologies Used
 

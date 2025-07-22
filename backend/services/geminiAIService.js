@@ -5,7 +5,7 @@ import path from 'path';
 
 const knotsData = JSON.parse(
   fs.readFileSync(
-    path.resolve(process.cwd(), '../src/data/knots.json'),
+    path.resolve(process.cwd(), '../frontend/src/data/knots.json'),
     'utf-8'
   )
 );
