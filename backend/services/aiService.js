@@ -43,21 +43,35 @@ async function getKnotSuggestions(query) {
     throw new Error('AI response did not contain valid content.');
   }
 
-  // Extract JSON object from the response text using a regular expression
-  const jsonMatch = text.match(/{[\s\S]*}/);
+  let jsonString = '';
 
-  if (!jsonMatch) {
-    console.error("No JSON object found in AI response. Raw text:", text);
-    throw new Error('AI did not return a valid JSON object.');
+  // First, try to find a JSON block within ```json ... ```
+  const jsonCodeBlockMatch = text.match(/```json\s*([\s\S]*?)\s*```/);
+  if (jsonCodeBlockMatch && jsonCodeBlockMatch[1]) {
+    jsonString = jsonCodeBlockMatch[1];
+  } else {
+    // If no code block, try to find the first JSON object in the text
+    const jsonMatch = text.match(/{[\s\S]*}/);
+    if (jsonMatch) {
+      jsonString = jsonMatch[0];
+    }
   }
 
-  const jsonString = jsonMatch[0];
+  if (!jsonString) {
+    console.log("No JSON object found in AI response. Returning raw text as explanation.");
+    // If no JSON is found, return the raw text as the explanation and no knots.
+    return {
+      explanation: text,
+      knots: []
+    };
+  }
+
   let aiResponse;
   try {
     aiResponse = JSON.parse(jsonString);
   } catch (e) {
     console.error("Failed to parse extracted JSON. Raw string:", jsonString);
-    throw new Error('AI did not return valid JSON');
+    throw new Error('AI returned malformed JSON');
   }
   // Map knot ids to full knot objects
   const knots = (aiResponse.knots || []).map(
