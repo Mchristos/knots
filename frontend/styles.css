@@ -404,21 +404,22 @@ header p {
 
 .modal-header {
   display: flex;
+  flex-direction: column;
   gap: 24px;
   margin-bottom: 32px;
-  align-items: flex-start;
 }
 
 .modal-knot-image {
-  width: 120px;
-  height: 120px;
+  width: 80%;
+  margin: 0 auto;
+  height: auto;
+  aspect-ratio: 16 / 9;
   background: linear-gradient(145deg, #4a5568, #2d3748);
   border: 1px solid #63b3ed;
   border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
   overflow: hidden;
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
 }
@@ -438,15 +439,15 @@ header p {
 }
 
 .instruction-steps {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
 
 .instruction-step {
   display: flex;
+  flex-direction: column;
   gap: 16px;
-  align-items: flex-start;
 }
 
 .step-number {
@@ -467,20 +468,20 @@ header p {
 .step-content {
   flex: 1;
   display: flex;
+  flex-direction: column;
   gap: 16px;
-  align-items: flex-start;
 }
 
 .step-image {
-  width: 100px;
-  height: 80px;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
   background: linear-gradient(145deg, #4a5568, #2d3748);
   border: 1px solid #63b3ed;
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
   overflow: hidden;
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
 }

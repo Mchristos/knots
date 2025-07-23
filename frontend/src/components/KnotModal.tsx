@@ -17,6 +17,7 @@ export const KnotModal: React.FC<KnotModalProps> = ({ knot, category, isOpen, on
         <span className="close" onClick={onClose}>&times;</span>
         <div id="modal-body">
           <div className="modal-header">
+            <h2>{knot.name}</h2>
             <div className="modal-knot-image">
               <img 
                 src={knot.mainImage} 
@@ -30,7 +31,6 @@ export const KnotModal: React.FC<KnotModalProps> = ({ knot, category, isOpen, on
               <span style={{ display: 'none', fontSize: '3rem' }}>🪢</span>
             </div>
             <div className="modal-info">
-              <h2>{knot.name}</h2>
               <div className="modal-meta">
                 <span className={`difficulty difficulty-${knot.difficulty.toLowerCase()}`}>
                   {knot.difficulty}
