@@ -3,6 +3,8 @@ import axios from 'axios';
 import fs from 'fs';
 import path from 'path';
 
+import { config } from '../config.js';
+
 const knotsData = JSON.parse(
   fs.readFileSync(
     path.resolve(process.cwd(), '../frontend/src/data/knots.json'),
@@ -10,32 +12,28 @@ const knotsData = JSON.parse(
   )
 );
 
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
-
-function buildPrompt(query) {
-  return `You are a knot-tying expert.\n\nGiven this user query: "${query}", suggest the most relevant knots from the following list (with id and name):\n\n${knotsData.knots.map(k => `- ${k.id}: ${k.name}`).join('\n')}\n\nReply with a JSON object of this form:\n{\n  explanation: <brief explanation>,\n  knots: [<ids of suggested knots>]\n}`;
-}
-
 async function getKnotSuggestions(query) {
-  if (!GEMINI_API_KEY) throw new Error('GEMINI_API_KEY not set');
-  const prompt = buildPrompt(query);
+  if (!config.apiKey) {
+    console.error('AI_API_KEY not set in environment variables.');
+    throw new Error('AI provider API key is not configured.');
+  }
+
+  const prompt = config.buildPrompt(query, knotsData);
   const body = {
     contents: [{ parts: [{ text: prompt }] }]
   };
+
   const { data } = await axios.post(
-    `${GEMINI_API_URL}?key=${GEMINI_API_KEY}`,
+    `${config.apiUrl}?key=${config.apiKey}`,
     body,
     { headers: { 'Content-Type': 'application/json' } }
   );
 
-  // Check for API error response from Google
   if (data.error) {
     console.error("AI Provider API Error:", data.error);
     throw new Error(`AI Provider returned an error: ${data.error.message}`);
   }
 
-  // Safely access the response text
   const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
 
   if (!text) {
@@ -45,12 +43,10 @@ async function getKnotSuggestions(query) {
 
   let jsonString = '';
 
-  // First, try to find a JSON block within ```json ... ```
   const jsonCodeBlockMatch = text.match(/```json\s*([\s\S]*?)\s*```/);
   if (jsonCodeBlockMatch && jsonCodeBlockMatch[1]) {
     jsonString = jsonCodeBlockMatch[1];
   } else {
-    // If no code block, try to find the first JSON object in the text
     const jsonMatch = text.match(/{[\s\S]*}/);
     if (jsonMatch) {
       jsonString = jsonMatch[0];
@@ -59,7 +55,6 @@ async function getKnotSuggestions(query) {
 
   if (!jsonString) {
     console.log("No JSON object found in AI response. Returning raw text as explanation.");
-    // If no JSON is found, return the raw text as the explanation and no knots.
     return {
       explanation: text,
       knots: []
@@ -73,10 +68,11 @@ async function getKnotSuggestions(query) {
     console.error("Failed to parse extracted JSON. Raw string:", jsonString);
     throw new Error('AI returned malformed JSON');
   }
-  // Map knot ids to full knot objects
+
   const knots = (aiResponse.knots || []).map(
     id => knotsData.knots.find(k => k.id === id)
   ).filter(Boolean);
+
   return {
     explanation: aiResponse.explanation || '',
     knots

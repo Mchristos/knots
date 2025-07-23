@@ -40,27 +40,37 @@
       "uses": ["First aid bandages", "Tying packages", "General binding"],
       "description": "A reliable binding knot that lies flat and won't slip when properly tied.",
       "strength": 6,
-      "mainImage": "/assets/knots/main/square-knot.svg",
+      "mainImage": "https://www.animatedknots.com/photos/reef/reefR7.jpg",
       "instructions": [
         {
           "stepNumber": 1,
           "instruction": "Hold one rope end in each hand. Cross the right rope over the left rope.",
-          "image": "/assets/knots/steps/square-knot-step-1.svg"
+          "image": "https://www.animatedknots.com/photos/reef/reefR2.jpg"
         },
         {
           "stepNumber": 2,
           "instruction": "Bring the right rope under and up through the loop created.",
-          "image": "/assets/knots/steps/square-knot-step-2.svg"
+          "image": "https://www.animatedknots.com/photos/reef/reefR3.jpg"
         },
         {
           "stepNumber": 3,
           "instruction": "Now cross the left rope over the right rope.",
-          "image": "/assets/knots/steps/square-knot-step-3.svg"
+          "image": "https://www.animatedknots.com/photos/reef/reefR4.jpg"
         },
         {
           "stepNumber": 4,
           "instruction": "Bring the left rope under and up through the loop. Pull tight.",
-          "image": "/assets/knots/steps/square-knot-step-4.svg"
+          "image": "https://www.animatedknots.com/photos/reef/reefR5.jpg"
+        },
+        {
+          "stepNumber": 5,
+          "instruction": "Bring the left rope under and up through the loop. Pull tight.",
+          "image": "https://www.animatedknots.com/photos/reef/reefR6.jpg"
+        },
+        {
+          "stepNumber": 6,
+          "instruction": "Bring the left rope under and up through the loop. Pull tight.",
+          "image": "https://www.animatedknots.com/photos/reef/reefR7.jpg"
         }
       ],
       "tips": [
