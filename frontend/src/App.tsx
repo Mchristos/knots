@@ -3,7 +3,7 @@ import { KnotData, Knot, KnotCategory } from './types';
 import { KnotTile } from './components/KnotTile';
 import { KnotModal } from './components/KnotModal';
 import AIChat from './components/AIChat';
-import knotData from './data/knots.json';
+import knotData from '../../shared/knots.json';
 
 /**
  * The main application component for Knots.
